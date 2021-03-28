@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model; //Model Eloquent
 class Mahasiswa extends Model //Definisi Model
 {
     use HasFactory;
-    protected $table = "mahasiswa"; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswas
+    protected $table = "mahasiswas"; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswas
     public $timestamps = false;
     protected $primaryKey = 'Nim'; // Memanggil isi DB Dengan primarykey
     /**

@@ -13,7 +13,7 @@ class TambahKolomTabel extends Migration
      */
     public function up()
     {
-        Schema::table('mahasiswa', function (Blueprint $table) {
+        Schema::table('mahasiswas', function (Blueprint $table) {
             $table->date('tanggalLahir')->after('jurusan')->nullable();
             $table->string('email')->after('No_Handphone')->nullable()->unique();
         });
