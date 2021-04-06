@@ -6,7 +6,7 @@
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
             </div>
             <div class="float-left my-4">
-                <form action="/mahasiswa/cari/" method="GET">
+                <form action="/mahasiswas/cari/" method="GET">
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control" placeholder="Search users...">
                         <button type="submit" class="btn btn-primary">
@@ -16,7 +16,7 @@
                 </form>
             </div>
             <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
+                <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($mahasiswa as $Mahasiswa)
+            @foreach ($mahasiswas as $Mahasiswa)
                 <tr>
                     <td>{{ $Mahasiswa->Nim }}</td>
                     <td>{{ $Mahasiswa->Nama }}</td>
@@ -51,11 +51,11 @@
                     <td>{{ $Mahasiswa->No_Handphone }}</td>
                     <td>{{ $Mahasiswa->email }}</td>
                     <td>
-                        <form action="{{ route('mahasiswa.destroy', $Mahasiswa->Nim) }}" method="POST">
+                        <form action="{{ route('mahasiswas.destroy', $Mahasiswa->Nim) }}" method="POST">
 
-                            <a class="btn btn-info" href="{{ route('mahasiswa.show', $Mahasiswa->Nim) }}">Show</a>
+                            <a class="btn btn-info" href="{{ route('mahasiswas.show', $Mahasiswa->Nim) }}">Show</a>
 
-                            <a class="btn btn-primary" href="{{ route('mahasiswa.edit', $Mahasiswa->Nim) }}">Edit</a>
+                            <a class="btn btn-primary" href="{{ route('mahasiswas.edit', $Mahasiswa->Nim) }}">Edit</a>
 
                             @csrf
                             @method('DELETE')
@@ -68,6 +68,6 @@
         </tbody>
     </table>
     <div class="d-flex">
-        {{ $mahasiswa->links() }}
+        {{ $mahasiswas->links() }}
     </div>
 @endsection

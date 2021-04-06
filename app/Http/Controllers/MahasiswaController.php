@@ -13,8 +13,8 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::paginate(5);
-        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        $mahasiswas = Mahasiswa::paginate(5);
+        return view('mahasiswas.index', ['mahasiswas' => $mahasiswas]);
     }
 
     /**
@@ -62,8 +62,8 @@ class MahasiswaController extends Controller
     public function show($id)
     {
         //menampilkan detail data dengan menemukan/berdasarkan Nim Mahasiswa
-        $Mahasiswa = Mahasiswa::find($id);
-        return view('mahasiswas.detail', compact('Mahasiswa'));
+        $mahasiswas = Mahasiswa::find($id);
+        return view('mahasiswas.detail', compact('mahasiswas'));
     }
 
     /**
@@ -75,8 +75,8 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         //menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
-        $Mahasiswa = Mahasiswa::find($id);
-        return view('mahasiswas.edit', compact('Mahasiswa'));
+        $mahasiswas = Mahasiswa::find($id);
+        return view('mahasiswas.edit', compact('mahasiswas'));
     }
 
     /**
@@ -120,13 +120,21 @@ class MahasiswaController extends Controller
     }
     public function search(Request $request)
     {
-        $mahasiswa = Mahasiswa::when($request->keyword, function ($query) use ($request) {
-            $query->where('Nama', 'like', "%{$request->keyword}%")
-                ->orWhere('Nim', 'like', "%{$request->keyword}%")
-                ->orWhere('Kelas', 'like', "%{$request->keyword}%")
-                ->orWhere('Jurusan', 'like', "%{$request->keyword}%");
-        })->paginate(5);
-        $mahasiswa->appends($request->only('keyword'));
-        return view('mahasiswa.index', compact('mahasiswa'));
+        $mahasiswas = Mahasiswa::where([
+            ['Nama', '!=', null, 'OR', 'NIM', '!=', null, 'OR', 'Kelas', '!=', null, 'OR', 'Jurusan', '!=', null],
+            [function ($query) use ($request){
+                if (($keyword = $request->keyword)) {
+                    $query  ->orWhere('Nama', 'like', "%{$keyword}%")
+                            ->orWhere('NIM', 'like', "%{$keyword}%")
+                            ->orWhere('Kelas', 'like', "%{$keyword}%")
+                            ->orWhere('Jurusan', 'like', "%{$keyword}%");
+                }
+            }]
+        ])
+        ->orderBy('NIM')
+        ->paginate(5);
+    
+        return view('mahasiswas.index', compact('mahasiswas'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 };
