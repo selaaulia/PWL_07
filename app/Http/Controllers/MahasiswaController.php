@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Kelas;
+use App\Models\Mahasiswa_Matakuliah;
 
 class MahasiswaController extends Controller
 {
@@ -149,6 +151,12 @@ class MahasiswaController extends Controller
         -> with('success', 'Mahasiswa Berhasil Dihapus');
 
     }
+
+    public function nilai($id){
+        $mahasiswas = Mahasiswa::with('Kelas', 'matakuliah')->find($id);
+        return view('mahasiswas.nilai', compact('mahasiswas'));
+    }
+
     public function search(Request $request)
     {
         $mahasiswas = Mahasiswa::where([
