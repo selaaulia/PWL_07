@@ -12,7 +12,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>Nim: </b>{{ $mahasiswas->Nim }}</li>
                         <li class="list-group-item"><b>Nama: </b>{{ $mahasiswas->Nama }}</li>
-                        <li class="list-group-item"><b>Kelas: </b>{{ $mahasiswas->Kelas }}</li>
+                        <li class="list-group-item"><b>Kelas: </b>{{ $mahasiswas->Kelas->nama_kelas }}</li>
                         <li class="list-group-item"><b>Jurusan: </b>{{ $mahasiswas->Jurusan }}</li>
                         <li class="list-group-item"><b>Tanggal Lahir: </b>{{ $mahasiswas->tanggalLahir }}</li>
                         <li class="list-group-item"><b>No_Handphone: </b>{{ $mahasiswas->No_Handphone }}</li>
