@@ -46,12 +46,15 @@ class MahasiswaController extends Controller
             'Kelas' => 'required',
             'Jurusan' => 'required',
             'No_Handphone' => 'required',
+            'email'=>'required',
+            'tanggalLahir'=>'required',
         ]);
 
         $mahasiswas = new Mahasiswa;
         $mahasiswas->nim = $request->get('Nim');
         $mahasiswas->nama = $request->get('Nama');
         $mahasiswas->jurusan= $request->get('Jurusan');
+        $mahasiswas->no_handphone= $request->get('No_Handphone');
         $mahasiswas->save();
 
         $kelas = new Kelas;
