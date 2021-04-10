@@ -14,9 +14,10 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('mahasiswas/nilai/{nim}', [MahasiswaController::class, 'nilai'])->name('mahasiswas.nilai');
 Route::get('mahasiswas/cari/',[MahasiswaController::class, 'search']);
 Route::resource('mahasiswas', MahasiswaController::class);
-Route::get('mahasiswas/nilai/{nim}', [MahasiswaController::class, 'nilai'])->name('mahasiswa.nilai');
+
 
 Route::get('/', function () {
     return view('welcome');
