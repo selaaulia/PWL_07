@@ -8,7 +8,7 @@
             <p class="m-0"><strong>Nama:</strong> {{ $mahasiswas->Nama }}</p>
             <p class="m-0"><strong>NIM:</strong> {{ $mahasiswas->Nim }}</p>
             <p class="m-0"><strong>Kelas:</strong> {{ $mahasiswas->kelas->nama_kelas }}</p>
-            <a href="{{ route('mahasiswas.index') }}" class="btn btn-secondary">Kembali</a>
+            
         </div>
         <div class="col-12">
             <table class="table table-bordered">
@@ -27,6 +27,7 @@
                     </tr>
                 @endforeach
             </table>
+            <a href="{{ route('mahasiswas.index') }}" class="btn btn-secondary">Kembali</a>
         </div>
     </div>
 @endsection
